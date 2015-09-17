@@ -1,0 +1,61 @@
+﻿
+<h2>Dodaj wpis</h2>
+
+<div>
+    NewRowId: {{newRowId}}
+</div>
+
+
+
+<div ng-hide="addError" class="cssFade ng-scope" style="">
+    <div class="exampleDiv">
+        <p>
+            {{message}}
+        </p>
+    </div>
+    <button ng-click="addError=!addError">Zamknij</button>
+</div>
+
+<form name="fuelEntryForm" ng-submit="fuelEntryForm.$valid && addFuelEntry()">
+
+    <div class="field">
+        <label>
+            Data tankowania:
+        </label>
+        <input class="form-control" type="date" ng-model="currentEntry.date" required />
+    </div>
+
+    <div class="field">
+        <label>
+            Zatankowano:
+        </label>
+        <input class="form-control" required type="number" ng-model="currentEntry.amountOfFuel" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" />
+
+    </div>
+
+    <div class="field">
+        <label>
+            Cena paliwa:
+        </label>
+        <input class="form-control" required type="number" ng-model="currentEntry.gasPrice" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" />
+
+    </div>
+
+    <div class="field">
+        <label>
+            Przebieg:
+        </label>
+        <input class="form-control" required type="number" ng-model="currentEntry.distance" placeholder="Większe niż {{lastDistance}}" min="{{lastDistance}}" />
+
+    </div>
+
+    <div class="field">
+        <label>
+            Przejechano:
+        </label>
+        <input class="form-control" required type="number" ng-model="currentEntry.currentDistance" placeholder="" />
+
+    </div>
+
+    <input type="submit" value="Zapisz" class="btn btn-default" />
+</form>
