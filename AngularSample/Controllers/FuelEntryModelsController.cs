@@ -20,7 +20,7 @@ namespace AngularSample.Controllers
         [ActionName("DefaultAction")]
         public IEnumerable<FuelEntryModel> GetFuelEntries()
         {
-            var defaultCar = db.Cars.SingleOrDefault(i => i.IsSelected);
+            var defaultCar = db.Cars.Include(i=>i.FuelEntries).SingleOrDefault(i => i.IsSelected);
             return defaultCar == null ? Enumerable.Empty<FuelEntryModel>() : defaultCar.FuelEntries;
         }
 

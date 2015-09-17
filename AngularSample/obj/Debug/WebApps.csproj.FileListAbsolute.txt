@@ -95,3 +95,4 @@ C:\_git\mjrepo\webApps\AngularSample\bin\System.Web.WebPages.Deployment.xml
 C:\_git\mjrepo\webApps\AngularSample\bin\System.Web.WebPages.Razor.xml
 C:\_git\mjrepo\webApps\AngularSample\obj\Debug\AngularSample.dll
 C:\_git\mjrepo\webApps\AngularSample\obj\Debug\AngularSample.pdb
+C:\_git\mjrepo\webApps\AngularSample\obj\Debug\WebApps.csprojResolveAssemblyReference.cache

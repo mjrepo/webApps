@@ -20,7 +20,7 @@ namespace AngularSample.Controllers
         [ActionName("DefaultAction")]
         public IQueryable<Car> GetCars()
         {
-            return db.Cars;
+            return db.Cars.Include(i=>i.FuelEntries);
         }
 
         // GET: api/Cars/5

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace AngularSample.Models
 {
@@ -19,6 +20,7 @@ namespace AngularSample.Models
         public FuelEntryDbContext()
             : base("name=FuelEntryModel")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
@@ -50,6 +52,7 @@ namespace AngularSample.Models
         public string CarName { get; set; }
         public bool IsSelected { get; set; }
 
+        [IgnoreDataMember]
         public virtual ICollection<FuelEntryModel> FuelEntries { get; set; }
     }
 }
