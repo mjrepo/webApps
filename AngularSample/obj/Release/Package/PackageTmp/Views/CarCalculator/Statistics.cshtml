@@ -1,0 +1,17 @@
+﻿<div class="panel panel-primary" ng-init="getEntries()">
+    <div class="panel-heading">
+        <h3 class="panel-title">Statystyki ({{selectedCar.carName}})</h3>
+    </div>
+    <div class="panel-body">
+
+        <canvas id="line" class="chart chart-line" chart-data="data"
+                chart-labels="labels" chart-legend="true" chart-series="series"
+                chart-click="onClick"></canvas>
+
+    </div>
+
+</div>
+
+
+
+

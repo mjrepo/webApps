@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="PhotoModel-Web.config Connection String" description="PhotoModel Connection String used in web.config by the application to access the database." defaultValue="Data Source=|DataDirectory|[Photos].sdf;Persist Security Info=False;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\_git\\mjrepo\\webApps\\AngularSample\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='PhotoModel']/@connectionString" />
+  </parameter>
+  <parameter name="FuelEntryModel-Web.config Connection String" description="FuelEntryModel Connection String used in web.config by the application to access the database." defaultValue="Data Source=|DataDirectory|[FuelEntries].sdf;Persist Security Info=False;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\_git\\mjrepo\\webApps\\AngularSample\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FuelEntryModel']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="DefaultConnection_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\_git\\mjrepo\\webApps\\AngularSample\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>
