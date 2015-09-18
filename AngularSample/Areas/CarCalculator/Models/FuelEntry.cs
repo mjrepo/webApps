@@ -1,14 +1,11 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Runtime.Serialization;
 
-namespace AngularSample.Models
+namespace AngularSample.Areas.CarCalculator.Models
 {
-    using System;
-    using System.Data.Entity;
-    using System.Linq;
-
     public class FuelEntryDbContext : DbContext
     {
         // Your context has been configured to use a 'FuelEntry' connection string from your application's 

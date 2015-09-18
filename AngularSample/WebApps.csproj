@@ -194,6 +194,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\CarCalculator\CarCalculatorAreaRegistration.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -223,9 +224,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CarCalculatorController.cs" />
-    <Compile Include="Controllers\CarsController.cs" />
-    <Compile Include="Controllers\FuelEntryModelsController.cs" />
+    <Compile Include="Areas\CarCalculator\Controllers\CarCalculatorController.cs" />
+    <Compile Include="Areas\CarCalculator\Controllers\CarsController.cs" />
+    <Compile Include="Areas\CarCalculator\Controllers\FuelEntryModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageGalleryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -235,7 +236,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\FuelEntry.cs" />
+    <Compile Include="Areas\CarCalculator\Models\FuelEntry.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeViewModels.cs" />
@@ -256,8 +257,10 @@
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\ng-table.css" />
     <Content Include="Content\ng-table.min.css" />
+    <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\timeline.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
@@ -331,19 +334,23 @@
     <Content Include="Scripts\ng-table.js" />
     <Content Include="Scripts\ng-table.min.js" />
     <Content Include="Scripts\prefixfree.min.js" />
+    <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
-    <Content Include="Views\CarCalculator\Index.cshtml" />
+    <Content Include="Areas\CarCalculator\Views\CarCalculator\Index.cshtml" />
     <Content Include="Scripts\ng-table.min.js.map" />
     <Content Include="Content\ng-table.less" />
     <Content Include="Content\angular-chart.css.map" />
-    <Content Include="Views\CarCalculator\Cars.cshtml" />
+    <Content Include="Areas\CarCalculator\Views\CarCalculator\Cars.cshtml" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Areas\CarCalculator\Views\web.config" />
+    <Content Include="Areas\CarCalculator\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\CarCalculator\Views\Shared\_Layout.cshtml" />
     <None Include="Properties\PublishProfiles\mjapps.hostingasp.pl - Web Deploy.pubxml" />
-    <Content Include="Views\CarCalculator\NewEntry.cshtml" />
-    <Content Include="Views\CarCalculator\List.cshtml" />
-    <Content Include="Views\CarCalculator\Statistics.cshtml" />
+    <Content Include="Areas\CarCalculator\Views\CarCalculator\NewEntry.cshtml" />
+    <Content Include="Areas\CarCalculator\Views\CarCalculator\List.cshtml" />
+    <Content Include="Areas\CarCalculator\Views\CarCalculator\Statistics.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

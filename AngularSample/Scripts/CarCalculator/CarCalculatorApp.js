@@ -14,10 +14,7 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
 
     $scope.resetCurrentEntry = function() {
         $scope.currentEntry.date = new Date(Date.now());
-        $scope.currentEntry.amountOfFuel = 0;
-        $scope.currentEntry.gasPrice = 0;
-        $scope.currentEntry.distance = 0;
-        $scope.currentEntry.currentDistance = 0;
+       
     }
 
     $scope.resetCurrentEntry();
@@ -182,11 +179,11 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
 carCalcApp.config([
     '$routeProvider', function ($routeProvider) {
         $routeProvider
-            .when('/cars', { templateUrl: '/CarCalculator/cars', controller: 'CarCalculatorController' })
-            .when('/list', { templateUrl: '/CarCalculator/list', controller: 'CarCalculatorController' })
-            .when('/add', { templateUrl: '/CarCalculator/newEntry', controller: 'CarCalculatorController' })
-            .when('/stats', { templateUrl: '/CarCalculator/statistics', controller: 'CarCalculatorController' })
-            .when('/', { templateUrl: '/CarCalculator/list', controller: 'CarCalculatorController' });
+            .when('/cars', { templateUrl: '/CarCalculator/CarCalculator/cars', controller: 'CarCalculatorController' })
+            .when('/list', { templateUrl: '/CarCalculator/CarCalculator/list', controller: 'CarCalculatorController' })
+            .when('/add', { templateUrl: '/CarCalculator/CarCalculator/newEntry', controller: 'CarCalculatorController' })
+            .when('/stats', { templateUrl: '/CarCalculator/CarCalculator/statistics', controller: 'CarCalculatorController' })
+            .when('/', { templateUrl: '/CarCalculator/CarCalculator/list', controller: 'CarCalculatorController' });
     }
 ]);
 

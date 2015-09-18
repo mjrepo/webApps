@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using AngularSample.Models;
+using AngularSample.Areas.CarCalculator.Models;
 
-namespace AngularSample.Controllers
+namespace AngularSample.Areas.CarCalculator.Controllers
 {
     public class FuelEntryModelsController : ApiController
     {
