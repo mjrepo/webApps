@@ -1,9 +1,11 @@
 ﻿using System.Web.Mvc;
+using AngularSample.Areas.CarCalculator.Services;
 
 namespace AngularSample.Areas.CarCalculator.Controllers
 {
     public class CarCalculatorController : Controller
     {
+        private readonly CarCalculatorService _calculatorService = new CarCalculatorService();
         // GET: CarCalculator
         public ActionResult Index()
         {
@@ -15,9 +17,9 @@ namespace AngularSample.Areas.CarCalculator.Controllers
             return PartialView();
         }
 
-        public ActionResult Cars()
+        public ActionResult Dashboard()
         {
-            return PartialView();
+            return PartialView(_calculatorService.CalculateSummary());
         }
 
         public ActionResult List()

@@ -81,6 +81,8 @@ namespace AngularSample.Areas.CarCalculator.Controllers
                 return BadRequest(ModelState);
             }
 
+            var defaultCar = db.Cars.Single(i => i.IsSelected);
+            fuelEntryModel.CarId = defaultCar.Id;
             db.FuelEntries.Add(fuelEntryModel);
             db.SaveChanges();
 

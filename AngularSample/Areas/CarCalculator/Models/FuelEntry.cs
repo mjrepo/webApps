@@ -39,8 +39,14 @@ namespace AngularSample.Areas.CarCalculator.Models
         public decimal CurrentDistance { get; set; }
         public decimal Distance { get; set; }
 
+        public decimal TotalCost { get { return GasPrice*AmountOfFuel; } }
+
         public string Year { get { return Date.Year.ToString(); } }
         public string YearAndMonth { get { return Date.ToString("MMMM yyyy"); } }
+
+        public decimal AmountOfFuelPer100Km { get { return AmountOfFuel/CurrentDistance*100; } }
+        public decimal CostOf1Km { get { return TotalCost/CurrentDistance; } }
+
     }
 
     public class Car

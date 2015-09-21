@@ -2,16 +2,11 @@
 
 var carCalcApp = angular.module("CarCalculatorApp", ['ngAnimate', 'ngTable', 'ngResource', 'ngRoute', "chart.js"]);
 
-carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filter, NgTableParams, $location, $resource) {
+carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filter, NgTableParams, $location) {
     $scope.fuelEntries = [];
-    $scope.cars = [];
     $scope.selectedCar = {};
     $scope.lastDistance = 0;
     $scope.currentEntry = {};
-    $scope.newCar = {};
-    $scope.showNewCarForm = false;
-    $scope.currentCarName = "";
-
     $scope.resetCurrentEntry = function() {
         $scope.currentEntry.date = new Date(Date.now());
        
@@ -30,54 +25,12 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
         });
     };
 
-    $scope.getCars = function () {
-        $http.get("/api/cars").success(function (data, status, headers, config) {
-            $scope.cars = data;
-            angular.forEach(data, function (car) {
-                if (car.isSelected) {
-                    $scope.selectedCar = car;
-                    $scope.currentCarName = car.carName;
-                }
-            });
-
-        }).error(function (data, status, headers, config) {
-            toastr.error(data, 'Błąd');
-        });
-    };
-  
-    $scope.addCar = function () {
-        $http.post('/api/cars', $scope.newCar).success(function (data, status, headers, config) {
-            $scope.newCar.id = data.id;
-            $scope.cars.push($scope.newCar);
-            $scope.newCar = {};
-
-            $(".closeModal").click();
-            toastr.success('Dodano nowy samochód!');
-        }).error(function (data, status, headers, config) {
-            toastr.error(data, 'Błąd');
-        });
-       
-    };
-
-    $scope.deleteCar = function () {
-        $http.delete('/api/cars/'+ $scope.selectedCar.id).success(function (data, status, headers, config) {
-            var deletedCarName = $scope.selectedCar.carName;
-            $scope.cars.pop($scope.selectedCar);
-            $scope.selectedCar = { carName: '', id: -1 };
-            $scope.tableParams.reload();
-            toastr.success(deletedCarName + ' został usunięty z bazy');
-
-        }).error(function (data, status, headers, config) {
-            toastr.error(data, 'Błąd');
-        });
-
-    };
-
     $scope.setDefault = function () {
         $http.post('/api/cars/'+$scope.selectedCar.id+'/setDefault').success(function (data, status, headers, config) {
             console.log('set default - success');
             $scope.tableParams.reload();
             toastr.success($scope.selectedCar.carName + ' został ustawiony jako domyślny');
+            $location.path('/list');
 
         }).error(function (data, status, headers, config) {
             toastr.error(data, 'Błąd');
@@ -179,7 +132,7 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
 carCalcApp.config([
     '$routeProvider', function ($routeProvider) {
         $routeProvider
-            .when('/cars', { templateUrl: '/CarCalculator/CarCalculator/cars', controller: 'CarCalculatorController' })
+            .when('/dashboard', { templateUrl: '/CarCalculator/CarCalculator/dashboard', controller: 'CarCalculatorController' })
             .when('/list', { templateUrl: '/CarCalculator/CarCalculator/list', controller: 'CarCalculatorController' })
             .when('/add', { templateUrl: '/CarCalculator/CarCalculator/newEntry', controller: 'CarCalculatorController' })
             .when('/stats', { templateUrl: '/CarCalculator/CarCalculator/statistics', controller: 'CarCalculatorController' })

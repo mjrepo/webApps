@@ -1,68 +1,7 @@
 ﻿
-<div  class="panel panel-default" ng-init="getCars()">
+<div class="panel panel-default" ng-controller="CarCalculatorController">
     <div class="panel-heading">
-        <h3 class="panel-title">Samochody</h3>
-    </div>
-    <div class="panel-body">
-
-        <form class="form-inline">
-            <div class="form-group">
-
-                <select class="form-control input-lg" ng-model="selectedCar" ng-options="c as c.carName for c in cars" ng-change="setDefault()">
-                    <option value="" disabled selected>Wybierz samochód z listy</option>
-                </select>
-            </div>
-
-            <button class="btn btn-success" data-toggle="modal" data-target="#newCarModal">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Dodaj
-            </button>
-            <button class="btn btn-danger" ng-click="deleteCar()">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Usuń samochód
-            </button>
-        </form>
-
-
-
-        <div class="modal fade" id="newCarModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Dodaj nowy samochód</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-inline" name="carForm">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">Nazwa: </div>
-                                    <input type="text" class="form-control" id="carName" ng-model="newCar.carName" placeholder="Wpisz nazwę samochodu" required>
-                                </div>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button class="closeModal btn btn-default" type="button" data-dismiss="modal">Zamknij</button>
-                                <button type="button" class="btn btn-primary closeModal" value="Dodaj" ng-disabled="!carForm.$valid" ng-click="addCar()">Zapisz</button>
-                            </div>
-                        </form>
-
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-    </div>
-</div>
-
-
-<div class="panel panel-default" ng-init="getCars()">
-    <div class="panel-heading">
-        <h3 class="panel-title">Wszystkie tankowania ({{selectedCar.carName}})</h3>
+        <h3 class="panel-title">Wszystkie tankowania</h3>
     </div>
     <div class="panel-body">
         <div class="brn-group pull-right">

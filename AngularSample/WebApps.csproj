@@ -195,6 +195,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\CarCalculator\CarCalculatorAreaRegistration.cs" />
+    <Compile Include="Areas\CarCalculator\Services\CarCalculatorService.cs" />
+    <Compile Include="Areas\CarCalculator\ViewModels\CarCalculatorSummary.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -318,6 +320,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Scripts\CarCalculator\CarCalculatorApp.js" />
+    <Content Include="Scripts\CarCalculator\CarModule.js" />
     <Content Include="Scripts\CarCalculator\ToastrConfig.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -341,7 +344,7 @@
     <Content Include="Scripts\ng-table.min.js.map" />
     <Content Include="Content\ng-table.less" />
     <Content Include="Content\angular-chart.css.map" />
-    <Content Include="Areas\CarCalculator\Views\CarCalculator\Cars.cshtml" />
+    <Content Include="Areas\CarCalculator\Views\CarCalculator\Dashboard.cshtml" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Areas\CarCalculator\Views\web.config" />
