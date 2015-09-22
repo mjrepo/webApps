@@ -4,6 +4,8 @@
   return check;
 }
 
+
+
 var carCalcApp = angular.module("CarCalculatorApp", ['ngAnimate', 'ngTable', 'ngResource', 'ngRoute', "chart.js"]);
 
 carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filter, NgTableParams, $location) {
@@ -27,6 +29,14 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
     $scope.resetCurrentEntry();
    
     $scope.addError = true;
+
+    $scope.newEntryForm = function() {
+        if (mobilecheck()) {
+            $('#mobileForm').modal();
+        } else {
+            $('#nonMobileForm').modal();
+        }
+    }
 
     $scope.getEntries = function() {
         $http.get("/api/fuelEntryModels").success(function(data, status, headers, config) {
@@ -142,7 +152,7 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
 });
 
 carCalcApp.config([
-    '$routeProvider', function ($routeProvider) {
+    '$routeProvider', function ($routeProvider, $locationProvider) {
         $routeProvider
             .when('/dashboard', { templateUrl: '/CarCalculator/CarCalculator/dashboard', controller: 'CarCalculatorController' })
             .when('/list', { templateUrl: '/CarCalculator/CarCalculator/list', controller: 'CarCalculatorController' })
@@ -150,6 +160,7 @@ carCalcApp.config([
             .when('/stats', { templateUrl: '/CarCalculator/CarCalculator/statistics', controller: 'CarCalculatorController' })
             .when('/', { templateUrl: '/CarCalculator/CarCalculator/list', controller: 'CarCalculatorController' });
     }
+
 ]);
 
 carCalcApp.controller("TabController", function($scope) {

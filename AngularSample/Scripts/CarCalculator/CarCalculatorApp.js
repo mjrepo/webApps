@@ -4,6 +4,8 @@
   return check;
 }
 
+
+
 var carCalcApp = angular.module("CarCalculatorApp", ['ngAnimate', 'ngTable', 'ngResource', 'ngRoute', "chart.js"]);
 
 carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filter, NgTableParams, $location) {
@@ -27,6 +29,14 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
     $scope.resetCurrentEntry();
    
     $scope.addError = true;
+
+    $scope.newEntryForm = function() {
+        if (mobilecheck()) {
+            $('#mobileForm').modal();
+        } else {
+            $('#nonMobileForm').modal();
+        }
+    }
 
     $scope.getEntries = function() {
         $http.get("/api/fuelEntryModels").success(function(data, status, headers, config) {
