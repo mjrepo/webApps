@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using AngularSample.Areas.CarCalculator.Services;
 
 namespace AngularSample.Areas.CarCalculator.Controllers
@@ -17,8 +18,15 @@ namespace AngularSample.Areas.CarCalculator.Controllers
             return PartialView();
         }
 
-        public ActionResult Dashboard()
+        public ActionResult Dashboard(int? year)
         {
+            if (year.HasValue)
+            {
+                var startDate = new DateTime(year.Value, 1, 1);
+                var endDate = startDate.AddYears(1).AddDays(-1);
+                return PartialView(_calculatorService.CalculateSummary(startDate, endDate));
+            }
+
             return PartialView(_calculatorService.CalculateSummary());
         }
 
