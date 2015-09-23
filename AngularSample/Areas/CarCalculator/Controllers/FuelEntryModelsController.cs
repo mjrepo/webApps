@@ -18,7 +18,7 @@ namespace AngularSample.Areas.CarCalculator.Controllers
         public IEnumerable<FuelEntryModel> GetFuelEntries()
         {
             var defaultCar = db.Cars.Include(i=>i.FuelEntries).SingleOrDefault(i => i.IsSelected);
-            return defaultCar == null ? Enumerable.Empty<FuelEntryModel>() : defaultCar.FuelEntries;
+            return defaultCar == null ? Enumerable.Empty<FuelEntryModel>() : defaultCar.FuelEntries.OrderBy(i=>i.Date);
         }
 
         // GET: api/FuelEntryModels/5

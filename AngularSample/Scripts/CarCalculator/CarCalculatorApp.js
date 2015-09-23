@@ -18,11 +18,30 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
        
     }
 
+    $scope.IsInMobileMode = true;
+
     $scope.checkIfMobile = function() {
-        if (mobilecheck()) {
+        //if (mobilecheck()) {
+        if ($scope.IsInMobileMode) {
             toastr.success('Mobile');
         } else {
             toastr.success('Not Mobile');
+        }
+    }
+
+    $scope.mobileWizardIndex = 0;
+
+    $scope.doStep = function (count) {
+        $scope.mobileWizardIndex += count;
+
+        $scope.mobileWizardIndex = Math.min($scope.mobileWizardIndex, 5);
+        $scope.mobileWizardIndex = Math.max($scope.mobileWizardIndex, 0);
+    }
+
+    $scope.doStepOne = function (keyEvent) {
+        if (keyEvent.which === 13){
+            $scope.doStep(1);
+            $scope.doStep(1);//trick?
         }
     }
 
@@ -30,12 +49,17 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
    
     $scope.addError = true;
 
-    $scope.newEntryForm = function() {
-        if (mobilecheck()) {
+    $scope.openNewEntryForm = function() {
+        //if (mobilecheck()) {
+          if ($scope.IsInMobileMode) {
             $('#mobileForm').modal();
         } else {
             $('#nonMobileForm').modal();
         }
+    }
+
+    $scope.closeNewEntryFormForMobile = function() {
+        $('#mobileForm').modal('hide')
     }
 
     $scope.getEntries = function() {
@@ -73,6 +97,9 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
                 $http.get("/api/fuelEntryModels").success(function (data, status, headers, config) {
                     params.total(data.length);
                     $scope.fuelEntries = data;
+                    $scope.lastDistance = data[data.length - 1].distance;
+                    $scope.currentEntry.lastDistance = $scope.lastDistance;
+
                     $scope.refreshChart();
                     $defer.resolve(data);
                 }).error(function (data, status, headers, config) {
@@ -95,18 +122,18 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
            
 
             $scope.fuelEntries.push($scope.currentEntry);
-            $scope.lastDistance = $scope.currentEntry.lastDistance;
+            $scope.lastDistance = $scope.currentEntry.distance;
             $scope.currentEntry = {};
-            $scope.currentEntry.distance = $scope.lastDistance;
+            $scope.currentEntry.lastDistance = $scope.lastDistance;
 
             $scope.newRowId = data.id;
+            
 
             $scope.resetCurrentEntry();
-            //
+            $scope.mobileWizardIndex = 0;
             toastr.success('Pomyślnie dodano nowy wpis', 'Nowe tankowanie');
             $scope.tableParams.reload();
 
-            //$(".closeModal").click();
 
         }).error(function(data, status, headers, config) {
             toastr.error(data, 'Błąd');
@@ -172,5 +199,24 @@ carCalcApp.controller("TabController", function($scope) {
 
     $scope.setTab = function(value) {
         $scope.currentTab = value;
+    };
+});
+
+carCalcApp.directive('ngFocus', function ($timeout) {
+    return {
+        link: function (scope, element, attrs) {
+            scope.$watch(attrs.ngFocus, function (val) {
+                if (angular.isDefined(val) && val) {
+                    $timeout(function () { element[0].focus(); });
+                }
+            }, true);
+
+            element.bind('blur', function () {
+                if (angular.isDefined(attrs.ngFocusLost)) {
+                    scope.$apply(attrs.ngFocusLost);
+
+                }
+            });
+        }
     };
 });
