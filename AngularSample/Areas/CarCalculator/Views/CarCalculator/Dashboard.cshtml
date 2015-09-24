@@ -12,17 +12,14 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">@Model.SumDistance.ToString("N") km</div>
-                            <div>Przejechano w sumie</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
+                <div class="panel-footer">
+                    <div>Przejechano w sumie</div>
+                    <div class="clearfix"></div>
+                </div>
+             
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -34,17 +31,16 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">@Model.SumAmountOfFuel.ToString("N") l</div>
-                            <div>Zatankowano w sumie</div>
+                            
                         </div>
                     </div>
                 </div>
-                <a href="#">
+               
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div>Zatankowano w sumie</div>
                         <div class="clearfix"></div>
                     </div>
-                </a>
+                
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -56,17 +52,16 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">@Model.SumTotalCost.ToString("N") zł</div>
-                            <div>Zapłacono w sumie</div>
+                           
                         </div>
                     </div>
                 </div>
-                <a href="#">
+               
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div>Zapłacono w sumie</div>
                         <div class="clearfix"></div>
                     </div>
-                </a>
+              
             </div>
         </div>
     </div>
@@ -80,18 +75,15 @@
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">@Model.AvgAmountOf100Km.ToString("N")</div>
-                            <div>Średnie spalanie </div>
+                            <div class="huge">@Model.AvgAmountOf100Km.ToString("N") l/100km</div>
+                           
                         </div>
                     </div>
                 </div>
-                <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div>Średnie spalanie </div>
                         <div class="clearfix"></div>
                     </div>
-                </a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -102,18 +94,15 @@
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">@Model.MinAmountOf100Km.ToString("N")</div>
-                            <div>Minimalne średnie spalanie </div>
+                            <div class="huge">@Model.MinAmountOf100Km.ToString("N") l/100km</div>
+                            
                         </div>
                     </div>
                 </div>
-                <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div>Minimalne średnie spalanie </div>
                         <div class="clearfix"></div>
                     </div>
-                </a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -124,18 +113,15 @@
                             <i class="fa fa-shopping-cart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">@Model.MaxAmountOf100Km.ToString("N")</div>
-                            <div>Maksymalne średnie spalanie </div>
+                            <div class="huge">@Model.MaxAmountOf100Km.ToString("N") l/100km</div>
+                           
                         </div>
                     </div>
                 </div>
-                <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div>Maksymalne średnie spalanie </div>
                         <div class="clearfix"></div>
                     </div>
-                </a>
             </div>
         </div>
     </div>
@@ -149,18 +135,15 @@
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">@Model.AvgCostOf1Km.ToString("N")</div>
-                            <div>Średni koszt 1 km</div>
+                            <div class="huge">@Model.AvgCostOf1Km.ToString("N") zł</div>
+                           
                         </div>
                     </div>
                 </div>
-                <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div>Średni koszt 1 km</div>
                         <div class="clearfix"></div>
                     </div>
-                </a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -171,18 +154,14 @@
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">@Model.MinCost1Km.ToString("N")</div>
-                            <div>Minimalny średni koszt 1 km</div>
+                            <div class="huge">@Model.MinCost1Km.ToString("N") zł</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div>Minimalny średni koszt 1 km</div>
                         <div class="clearfix"></div>
                     </div>
-                </a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -193,18 +172,15 @@
                             <i class="fa fa-shopping-cart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">@Model.MaxCost1Km.ToString("N")</div>
-                            <div>Maksymalny średni koszt 1 km</div>
+                            <div class="huge">@Model.MaxCost1Km.ToString("N") zł</div>
+                           
                         </div>
                     </div>
                 </div>
-                <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div>Maksymalny średni koszt 1 km</div>
                         <div class="clearfix"></div>
                     </div>
-                </a>
             </div>
         </div>
     </div>

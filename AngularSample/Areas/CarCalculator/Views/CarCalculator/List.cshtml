@@ -1,201 +1,210 @@
-﻿
-<div class="panel panel-default" ng-controller="CarCalculatorController">
-    <div class="panel-heading">
-        <h3 class="panel-title">Wszystkie tankowania</h3>
-    </div>
-    <div class="panel-body">
-        Tryb mobile
-        <input type="checkbox" ng-model="IsInMobileMode" />
-
-
-        <div class="brn-group pull-right">
-            <button class="btn btn-primary btn-lg" data-toggle="modal" ng-click="openNewEntryForm()">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nowe tankowanie
-            </button>
+﻿<div class="row">
+    <div class="panel panel-default" ng-controller="CarCalculatorController">
+        <div class="panel-heading">
+            <h3 class="panel-title">Wszystkie tankowania</h3>
         </div>
-        <table ng-table="tableParams" class="table table-condensed table-bordered table-hover">
+        <div class="panel-body">
+            Tryb mobile
+            <input type="checkbox" ng-model="IsInMobileMode" />
 
 
-            <tr class="ng-table-group" ng-repeat-start="group in $groups">
-                <td colspan="5">
-                    <a href="" ng-click="group.$hideRows = !group.$hideRows">
-                        <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
-                        <strong>{{ group.value }}</strong>
-                    </a>
-                </td>
-            </tr>
-            <tr ng-hide="group.$hideRows" ng-class="{success: entry.id === newRowId}" ng-repeat="entry in group.data">
+            <div class="brn-group pull-right">
+                <button class="btn btn-primary btn-lg" data-toggle="modal" ng-click="openNewEntryForm()">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nowe tankowanie
+                </button>
+            </div>
+            <table ng-table="tableParams" class="table table-condensed table-bordered table-hover">
 
-                <td sortable="date" data-title="'Data'">
-                    {{entry.date | date: 'yyyy-MM-dd'}}
-                </td>
-                <td sortable="amountOfFuel" data-title="'Zatankowano'">
-                    {{entry.amountOfFuel}}
-                </td>
-                <td sortable="gasPrice" data-title="'Cena paliwa'">
-                    {{entry.gasPrice}}
-                </td>
-                <td sortable="distance" data-title="'Przebieg'">
-                    {{entry.distance}}
-                </td>
 
-                <td sortable="distance" data-title="'Przebieg'">
-                    {{entry.currentDistance}}
-                </td>
+                <tr class="ng-table-group" ng-repeat-start="group in $groups">
+                    <td colspan="5">
+                        <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                            <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                            <strong>{{ group.value }}</strong>
+                        </a>
+                    </td>
+                </tr>
+                <tr ng-hide="group.$hideRows" ng-class="{success: entry.id === newRowId}" ng-repeat="entry in group.data">
 
-            </tr>
+                    <td sortable="date" data-title="'Data'">
+                        {{entry.date | date: 'yyyy-MM-dd'}}
+                    </td>
+                    <td sortable="amountOfFuel" data-title="'Zatankowano (l)'" ng-if="!IsInMobileMode">
+                        {{entry.amountOfFuel}}
+                    </td>
+                    <td sortable="gasPrice" data-title="'Cena paliwa (zł)'" ng-if="!IsInMobileMode">
+                        {{entry.gasPrice}}
+                    </td>
+                    <td sortable="distance" data-title="'Przebieg (km)'" ng-if="!IsInMobileMode">
+                        {{entry.distance}}
+                    </td>
 
-            <tr ng-repeat-end>
-                <td class="text-success text-right"><strong>Podsumowanie:</strong></td>
-                <td><em>Spalanie(l/100km): {{calcSum(group.data).a | number:2}}</em></td>
-            </tr>
-            <tfoot ng-if="demo.isLastPage()">
-                <tr>
-                    <td class="text-success text-right"><strong>Grant Total:</strong></td>
+                    <td sortable="distance" data-title="'Przejechano (km)'" ng-if="!IsInMobileMode">
+                        {{entry.currentDistance}}
+                    </td>
+
+                    <td sortable="distance" data-title="'Średnie spalanie (l/100km)'">
+                        {{entry.amountOfFuelPer100Km | number:2 }}
+                    </td>
+                    <td sortable="distance" data-title="'Koszt jednego kilometra (zł)'">
+                        {{entry.costOf1Km | number:2}}
+                    </td>
 
                 </tr>
-            </tfoot>
-        </table>
 
-        <div class="modal fade" id="nonMobileForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Nowe tankowanie</h4>
-                    </div>
-                    <div class="modal-body">
+                <tr ng-repeat-end>
+                    <td class="text-success text-right"><strong>Podsumowanie:</strong></td>
+                    <td><em>Spalanie (l/100km): {{calcSum(group.data).a | number:2}}</em></td>
+                    <td><em>Koszt kilometra (zł): {{calcSum(group.data).b | number:2}}</em></td>
+                </tr>
+                <tfoot ng-if="demo.isLastPage()">
+                    <tr>
+                        <td class="text-success text-right"><strong>Grant Total:</strong></td>
+
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="modal fade" id="nonMobileForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Nowe tankowanie</h4>
+                        </div>
+                        <div class="modal-body">
 
 
 
-                        <form class="form-horizontal" name="fuelEntryForm" novalidate>
-                            <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.date.$invalid}">
-                                <label for="date" class="col-sm-4 control-label">Data tankowania:</label>
-                                <div class="col-sm-7">
-                                    <input type="date" class="form-control" name="date" placeholder="Data tankowania" ng-model="currentEntry.date" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.amountOfFuel.$invalid}">
-                                <label class="col-sm-4 control-label">Zatankowano:</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" name="amountOfFuel" required type="number" ng-model="currentEntry.amountOfFuel" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="1" min="0.01">
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.gasPrice.$invalid}">
-                                <label class="col-sm-4 control-label">Cena paliwa:</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" name="gasPrice" required type="number" ng-model="currentEntry.gasPrice" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" min="0.01">
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.distance.$invalid}">
-                                <label class="col-sm-4 control-label">Przebieg:</label>
-                                <div class="col-sm-7">
-                                    <input class="form-control" name="distance" required type="number" ng-model="currentEntry.distance" placeholder="Większe niż {{lastDistance}}" min="{{lastDistance}}">
-                                </div>
-                            </div>
-                            <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.currentDistance.$invalid}">
-                                <label class="col-sm-4 control-label">Przejechano:</label>
-                                <div class="col-sm-7">
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button ng-click="currentEntry.currentDistance = (currentEntry.distance - lastDistance)" class="btn btn-default" type="button">Ustaw</button>
-                                        </span>
-                                        <input placeholder="{{currentEntry.distance - lastDistance}}" class="form-control" name="currentDistance" required type="number" ng-model="currentEntry.currentDistance" min="1">
+                            <form class="form-horizontal" name="fuelEntryForm" novalidate>
+                                <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.date.$invalid}">
+                                    <label for="date" class="col-sm-4 control-label">Data tankowania:</label>
+                                    <div class="col-sm-7">
+                                        <input type="date" class="form-control" name="date" placeholder="Data tankowania" ng-model="currentEntry.date" required>
                                     </div>
-                               
                                 </div>
-                            </div>
 
-                            <div class="modal-footer">
-                                <button class="closeModal btn btn-default" type="button" data-dismiss="modal">Zamknij</button>
-                                <button type="button" class="btn btn-primary" value="Dodaj" ng-disabled="!fuelEntryForm.$valid" ng-click="addFuelEntry()">Zapisz</button>
-                            </div>
-                        </form>
+                                <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.amountOfFuel.$invalid}">
+                                    <label class="col-sm-4 control-label">Zatankowano:</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" name="amountOfFuel" required type="number" ng-model="currentEntry.amountOfFuel" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="1" min="0.01">
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.gasPrice.$invalid}">
+                                    <label class="col-sm-4 control-label">Cena paliwa:</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" name="gasPrice" required type="number" ng-model="currentEntry.gasPrice" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" min="0.01">
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.distance.$invalid}">
+                                    <label class="col-sm-4 control-label">Przebieg:</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" name="distance" required type="number" ng-model="currentEntry.distance" placeholder="Większe niż {{lastDistance}}" min="{{lastDistance}}">
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.currentDistance.$invalid}">
+                                    <label class="col-sm-4 control-label">Przejechano:</label>
+                                    <div class="col-sm-7">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button ng-click="currentEntry.currentDistance = (currentEntry.distance - lastDistance)" class="btn btn-default" type="button">Ustaw</button>
+                                            </span>
+                                            <input placeholder="{{currentEntry.distance - lastDistance}}" class="form-control" name="currentDistance" required type="number" ng-model="currentEntry.currentDistance" min="1">
+                                        </div>
 
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button class="closeModal btn btn-default" type="button" data-dismiss="modal">Zamknij</button>
+                                    <button type="button" class="btn btn-primary" value="Dodaj" ng-disabled="!fuelEntryForm.$valid" ng-click="addFuelEntry()">Zapisz</button>
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="modal fade" id="mobileForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Nowe tankowanie</h4>
-                    </div>
-                    <div class="modal-body">
+            <div class="modal fade" id="mobileForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Nowe tankowanie</h4>
+                        </div>
+                        <div class="modal-body">
 
-                        <form id="fuelEntryForm" name="fuelEntryForm" novalidate>
+                            <form id="fuelEntryForm" name="fuelEntryForm" novalidate>
 
-                            <div class="row well"><strong>Krok {{ mobileWizardIndex + 1 }} of 5</strong></div>
+                                <div class="row well"><strong>Krok {{ mobileWizardIndex + 1 }} of 5</strong></div>
 
-                            <div class="row step-container well" ng-show="mobileWizardIndex == 0">
-                                <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.date.$invalid}">
-                                    <label for="date" class="control-label">Data tankowania:</label>
-                                    <div >
-                                        <input ng-keypress="doStepOne($event)" ng-focus="mobileWizardIndex == 0" type="date" class="form-control" name="date" placeholder="Data tankowania" ng-model="currentEntry.date" required>
+                                <div class="row step-container well" ng-show="mobileWizardIndex == 0">
+                                    <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.date.$invalid}">
+                                        <label for="date" class="control-label">Data tankowania:</label>
+                                        <div>
+                                            <input ng-keypress="doStepOne($event)" ng-focus="mobileWizardIndex == 0" type="date" class="form-control" name="date" placeholder="Data tankowania" ng-model="currentEntry.date" required>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row step-container well" ng-show="mobileWizardIndex == 1">
-                                <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.amountOfFuel.$invalid}">
-                                    <label  class="control-label">Zatankowano:</label>
-                                    <div >
-                                        <input ng-keypress="doStepOne($event)" ng-focus="mobileWizardIndex == 1" class="form-control" name="amountOfFuel" required type="number" ng-model="currentEntry.amountOfFuel" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="1" min="0.01">
+                                <div class="row step-container well" ng-show="mobileWizardIndex == 1">
+                                    <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.amountOfFuel.$invalid}">
+                                        <label class="control-label">Zatankowano:</label>
+                                        <div>
+                                            <input ng-keypress="doStepOne($event)" ng-focus="mobileWizardIndex == 1" class="form-control" name="amountOfFuel" required type="number" ng-model="currentEntry.amountOfFuel" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="1" min="0.01">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row step-container well" ng-show="mobileWizardIndex == 2">
-                                <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.gasPrice.$invalid}">
-                                    <label class="control-label">Cena paliwa:</label>
-                                    <div >
-                                        <input ng-keypress="doStepOne($event)" ng-focus="mobileWizardIndex == 2" class="form-control" name="gasPrice" required type="number" ng-model="currentEntry.gasPrice" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" min="0.01">
+                                <div class="row step-container well" ng-show="mobileWizardIndex == 2">
+                                    <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.gasPrice.$invalid}">
+                                        <label class="control-label">Cena paliwa:</label>
+                                        <div>
+                                            <input ng-keypress="doStepOne($event)" ng-focus="mobileWizardIndex == 2" class="form-control" name="gasPrice" required type="number" ng-model="currentEntry.gasPrice" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" min="0.01">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row step-container well" ng-show="mobileWizardIndex == 3">
-                                <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.distance.$invalid}">
-                                    <label class="control-label">Przebieg:</label>
-                                    <div >
-                                        <input ng-keypress="doStepOne($event)" ng-focus="mobileWizardIndex == 3" class="form-control" name="distance" required type="number" ng-model="currentEntry.distance" placeholder="Większe niż {{lastDistance}}" min="{{lastDistance}}">
+                                <div class="row step-container well" ng-show="mobileWizardIndex == 3">
+                                    <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.distance.$invalid}">
+                                        <label class="control-label">Przebieg:</label>
+                                        <div>
+                                            <input ng-keypress="doStepOne($event)" ng-focus="mobileWizardIndex == 3" class="form-control" name="distance" required type="number" ng-model="currentEntry.distance" placeholder="Większe niż {{lastDistance}}" min="{{lastDistance}}">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row step-container well" ng-show="mobileWizardIndex == 4">
-                                <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.currentDistance.$invalid}">
-                                    <label class="control-label">Przejechano:</label>
+                                <div class="row step-container well" ng-show="mobileWizardIndex == 4">
+                                    <div class="form-group" ng-class="{ 'has-error' : fuelEntryForm.currentDistance.$invalid}">
+                                        <label class="control-label">Przejechano:</label>
 
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button ng-click="currentEntry.currentDistance = (currentEntry.distance - lastDistance)" class="btn btn-default" type="button">Ustaw</button>
-                                        </span>
-                                        <input placeholder="{{currentEntry.distance - lastDistance}}" ng-focus="mobileWizardIndex == 4" class="form-control" name="currentDistance" required type="number" ng-model="currentEntry.currentDistance" min="1">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button ng-click="currentEntry.currentDistance = (currentEntry.distance - lastDistance)" class="btn btn-default" type="button">Ustaw</button>
+                                            </span>
+                                            <input placeholder="{{currentEntry.distance - lastDistance}}" ng-focus="mobileWizardIndex == 4" class="form-control" name="currentDistance" required type="number" ng-model="currentEntry.currentDistance" min="1">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <button class="btn btn-default pull-left" ng-disabled="mobileWizardIndex === 0" ng-click="doStep(-1)">Poprzedni</button>
-                                <button class="btn btn-default pull-right" ng-hide="mobileWizardIndex === 4" ng-click="doStep(1)">Następny</button>
-                                <button class="btn btn-default pull-right" ng-show="mobileWizardIndex === 4" ng-click="addFuelEntry();closeNewEntryFormForMobile()" ng-disabled="!fuelEntryForm.$valid">Zapisz</button>
-                            </div>
-
-
-                        </form>
+                                <div class="row">
+                                    <button class="btn btn-default pull-left" ng-disabled="mobileWizardIndex === 0" ng-click="doStep(-1)">Poprzedni</button>
+                                    <button class="btn btn-default pull-right" ng-hide="mobileWizardIndex === 4" ng-click="doStep(1)">Następny</button>
+                                    <button class="btn btn-default pull-right" ng-show="mobileWizardIndex === 4" ng-click="addFuelEntry();closeNewEntryFormForMobile()" ng-disabled="!fuelEntryForm.$valid">Zapisz</button>
+                                </div>
 
 
+                            </form>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
 
 

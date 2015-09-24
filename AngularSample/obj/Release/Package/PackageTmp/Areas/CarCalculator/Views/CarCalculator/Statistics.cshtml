@@ -1,17 +1,61 @@
-﻿<div class="panel panel-default" ng-init="getEntries()">
-    <div class="panel-heading">
-        <h3 class="panel-title">Statystyki ({{selectedCar.carName}})</h3>
+﻿
+<div ng-init="getEntries()">
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Przebieg
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+
+                    <canvas id="line2" class="chart chart-line" chart-data="chartsData.distanceChart.data"
+                            chart-labels="chartsData.labels" chart-legend="true" chart-series="chartsData.distanceChart.series"
+                            chart-click="onClick"></canvas>
+
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
     </div>
-    <div class="panel-body">
 
-        <canvas id="line" class="chart chart-line" chart-data="data"
-                chart-labels="labels" chart-legend="true" chart-series="series"
-                chart-click="onClick"></canvas>
+    <!-- /.col-lg-12 -->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Średnie spalanie
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <canvas id="line" class="chart chart-line" chart-data="chartsData.amountPer100km.data"
+                            chart-labels="chartsData.labels" chart-legend="true" chart-series="chartsData.amountPer100km.series"
+                            chart-click="onClick"></canvas>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Koszt jednego kilometra
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <canvas id="line3" class="chart chart-line" chart-data="chartsData.oneKmCost.data"
+                            chart-labels="chartsData.labels" chart-legend="true" chart-series="chartsData.oneKmCost.series"
+                            chart-click="onClick"></canvas>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
 
     </div>
-
 </div>
-
-
-
-

@@ -25,7 +25,7 @@
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <span class="glyphicon glyphicon-hand-right" aria-hidden="true" title="Wybierz auto"></span> 
+                    <span class="glyphicon glyphicon-hand-right" aria-hidden="true" title="Wybierz auto"></span> Wybierz samochód
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
                     <li>
@@ -62,14 +62,8 @@
                 <ul class="nav" id="side-menu">
                     <li ng-class="{active: currentTab===0}"><a href="#/dashboard" ng-click="setTab(0)">Informacje</a></li>
                     <li ng-class="{active: currentTab===1}"><a href="#/list" ng-click="setTab(1)">Historia tankowań</a></li>
-                    <li>
-                        <a href="#"> Statystyki</a>
-                        <ul class="nav nav-second-level collapse">
-                            <li ng-class="{active: isSelected(2)}"><a href="#/stats" ng-click="setTab(2)">Przebieg</a></li>
-                            <li ng-class="{active: isSelected(3)}"><a href="#/stats" ng-click="setTab(3)">Spalanie</a></li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
+                    <li ng-class="{active: currentTab===2}"><a href="#/stats" ng-click="setTab(2)">Statystyki</a></li>
+                    
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->
@@ -80,7 +74,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">{{selectedCar.carName}}</h1>
+                <h1 class="page-header">Wybrany samochód: {{selectedCar.carName}}</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>

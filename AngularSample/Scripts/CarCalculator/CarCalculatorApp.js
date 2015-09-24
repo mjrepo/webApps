@@ -146,29 +146,47 @@ carCalcApp.controller("CarCalculatorController", function ($scope, $http, $filte
     $scope.calcSum = function (data) {
         var distanceSum = 0;
         var amountSum = 0;
+        var totalCost = 0;
         angular.forEach(data, function (item) {
             distanceSum += item.currentDistance;
             amountSum += item.amountOfFuel;
+            totalCost += item.amountOfFuel * item.gasPrice;
         });
 
         var amountPer100Km = amountSum / distanceSum * 100;
+        var costOfOneKm = totalCost / distanceSum;
 
-        return {a: amountPer100Km, b: amountSum};
+        return { a: amountPer100Km, b: costOfOneKm };
     }
-    
-    $scope.labels = [];
-    $scope.series = ['Przebieg'];
-    $scope.data = [];
-    $scope.distanceSeries = [];
+
+    $scope.chartsData = {};
+    $scope.chartsData.labels = [];
+    $scope.chartsData.distanceChart= {};
+    $scope.chartsData.distanceChart.series = ['Przebieg (km)'];
+    $scope.chartsData.distanceChart.dataSeries = [];
+    $scope.chartsData.distanceChart.data = [];
+    $scope.chartsData.amountPer100km = {};
+    $scope.chartsData.amountPer100km.series = ['Średnie spalanie (l/100km)'];
+    $scope.chartsData.amountPer100km.dataSeries = [];
+    $scope.chartsData.amountPer100km.data = [];
+    $scope.chartsData.oneKmCost = {};
+    $scope.chartsData.oneKmCost.series = ['Koszt jednego km (zł)'];
+    $scope.chartsData.oneKmCost.dataSeries = [];
+    $scope.chartsData.oneKmCost.data = [];
 
     $scope.refreshChart = function() {
         angular.forEach($scope.fuelEntries, function (entry) {
-
-            $scope.labels.push(entry.date);
-            $scope.distanceSeries.push(entry.distance);
+            $scope.chartsData.labels.push(entry.date.substr(0, 10));
+            $scope.chartsData.distanceChart.dataSeries.push(entry.distance);
+            $scope.chartsData.amountPer100km.dataSeries.push(entry.amountOfFuelPer100Km);
+            $scope.chartsData.oneKmCost.dataSeries.push(entry.costOf1Km);
         });
-        $scope.distanceSeries = [];
-        $scope.data.push($scope.distanceSeries);
+        if ($scope.fuelEntries.length>0) {
+            $scope.chartsData.distanceChart.data.push($scope.chartsData.distanceChart.dataSeries);
+            $scope.chartsData.amountPer100km.data.push($scope.chartsData.amountPer100km.dataSeries);
+            $scope.chartsData.oneKmCost.data.push($scope.chartsData.oneKmCost.dataSeries);
+        }
+       
     }
 
     $scope.onClick = function (points, evt) {
