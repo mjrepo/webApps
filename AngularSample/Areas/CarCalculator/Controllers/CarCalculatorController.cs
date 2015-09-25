@@ -39,5 +39,10 @@ namespace AngularSample.Areas.CarCalculator.Controllers
         {
             return PartialView();
         }
+
+        public ActionResult Timeline()
+        {
+            return PartialView();
+        }
     }
 }

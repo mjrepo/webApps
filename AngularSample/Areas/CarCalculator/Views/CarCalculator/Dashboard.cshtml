@@ -136,14 +136,14 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">@Model.AvgCostOf1Km.ToString("N") zł</div>
-                           
+
                         </div>
                     </div>
                 </div>
-                    <div class="panel-footer">
-                        <div>Średni koszt 1 km</div>
-                        <div class="clearfix"></div>
-                    </div>
+                <div class="panel-footer">
+                    <div>Średni koszt 1 km</div>
+                    <div class="clearfix"></div>
+                </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -158,10 +158,10 @@
                         </div>
                     </div>
                 </div>
-                    <div class="panel-footer">
-                        <div>Minimalny średni koszt 1 km</div>
-                        <div class="clearfix"></div>
-                    </div>
+                <div class="panel-footer">
+                    <div>Minimalny średni koszt 1 km</div>
+                    <div class="clearfix"></div>
+                </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -173,17 +173,47 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">@Model.MaxCost1Km.ToString("N") zł</div>
-                           
+
                         </div>
                     </div>
                 </div>
-                    <div class="panel-footer">
-                        <div>Maksymalny średni koszt 1 km</div>
-                        <div class="clearfix"></div>
-                    </div>
+                <div class="panel-footer">
+                    <div>Maksymalny średni koszt 1 km</div>
+                    <div class="clearfix"></div>
+                </div>
             </div>
         </div>
     </div>
+ 
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-comments fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">@Model.AverageFuel.ToString("N")</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div>Tankowanie średnio co dni</div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            
+        </div>
+        <div class="col-lg-3 col-md-6">
+           
+    </div>
+    </div>
+
+
 }
 else
 {

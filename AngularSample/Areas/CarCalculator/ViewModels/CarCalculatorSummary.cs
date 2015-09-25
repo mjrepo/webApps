@@ -22,6 +22,10 @@ namespace AngularSample.Areas.CarCalculator.ViewModels
             SumDistance = fuelEntries.Sum(i => i.CurrentDistance);
             SumAmountOfFuel = fuelEntries.Sum(i => i.AmountOfFuel);
             SumTotalCost = fuelEntries.Sum(i => i.GasPrice * i.AmountOfFuel);
+
+            var minDate = fuelEntries.Min(i => i.Date);
+            var maxDate = fuelEntries.Max(i => i.Date);
+            AverageFuel = (decimal)((maxDate - minDate).TotalDays/fuelEntries.Count);
         }
 
         public bool HasData { get; private set; }
@@ -37,6 +41,7 @@ namespace AngularSample.Areas.CarCalculator.ViewModels
         public decimal SumDistance { get; private set; }
         public decimal SumAmountOfFuel { get; private set; }
         public decimal SumTotalCost { get; private set; }
+        public decimal AverageFuel { get; private set; }
 
         public decimal AvgAmountOf100Km
         {

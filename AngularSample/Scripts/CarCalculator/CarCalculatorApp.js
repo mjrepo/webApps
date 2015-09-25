@@ -203,6 +203,7 @@ carCalcApp.config([
             .when('/list', { templateUrl: '/CarCalculator/CarCalculator/list', controller: 'CarCalculatorController' })
             .when('/add', { templateUrl: '/CarCalculator/CarCalculator/newEntry', controller: 'CarCalculatorController' })
             .when('/stats', { templateUrl: '/CarCalculator/CarCalculator/statistics', controller: 'CarCalculatorController' })
+            .when('/timeline', { templateUrl: '/CarCalculator/CarCalculator/timeline', controller: 'CarCalculatorController' })
             .when('/', { templateUrl: '/CarCalculator/CarCalculator/list', controller: 'CarCalculatorController' });
     }
 

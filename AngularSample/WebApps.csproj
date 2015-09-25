@@ -353,6 +353,7 @@
     <Content Include="Areas\CarCalculator\Views\web.config" />
     <Content Include="Areas\CarCalculator\Views\_ViewStart.cshtml" />
     <Content Include="Areas\CarCalculator\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\CarCalculator\Views\CarCalculator\Timeline.cshtml" />
     <None Include="Properties\PublishProfiles\mjapps.hostingasp.pl - Web Deploy.pubxml" />
     <Content Include="Areas\CarCalculator\Views\CarCalculator\NewEntry.cshtml" />
     <Content Include="Areas\CarCalculator\Views\CarCalculator\List.cshtml" />
