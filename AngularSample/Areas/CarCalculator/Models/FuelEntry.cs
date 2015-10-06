@@ -25,6 +25,7 @@ namespace AngularSample.Areas.CarCalculator.Models
 
         public virtual DbSet<FuelEntryModel> FuelEntries { get; set; }
         public virtual DbSet<Car> Cars { get; set; }
+        public virtual DbSet<Milestone> Milestones { get; set; }
     }
 
     public class FuelEntryModel
@@ -57,5 +58,14 @@ namespace AngularSample.Areas.CarCalculator.Models
 
         [IgnoreDataMember]
         public virtual ICollection<FuelEntryModel> FuelEntries { get; set; }
+    }
+
+    public class Milestone
+    {
+        [Key]
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public string Description { get; set; }
+        public bool IsActive { get; set; }
     }
 }

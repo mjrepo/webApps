@@ -195,6 +195,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\CarCalculator\CarCalculatorAreaRegistration.cs" />
+    <Compile Include="Areas\CarCalculator\Controllers\MilestonesController.cs" />
     <Compile Include="Areas\CarCalculator\Services\CarCalculatorService.cs" />
     <Compile Include="Areas\CarCalculator\ViewModels\CarCalculatorSummary.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -225,6 +226,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\ReceiptCollector\Controllers\ReceiptsController.cs" />
+    <Compile Include="Areas\ReceiptCollector\Models\Photo.cs" />
     <Compile Include="Areas\ReceiptCollector\ReceiptCollectorAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\CarCalculator\Controllers\CarCalculatorController.cs" />
@@ -252,6 +255,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\ReceiptCollector\App\ReceiptCollector.js" />
     <Content Include="Content\angular-chart.css" />
     <Content Include="Content\angular-toastr.css" />
     <Content Include="Content\angular-toastr.min.css" />
@@ -336,6 +340,31 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\css\demo-ie8.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\css\demo.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\css\jquery.fileupload-noscript.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\css\jquery.fileupload-ui.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\css\jquery.fileupload.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\css\style.css" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\Gruntfile.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\img\loading.gif" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\img\progressbar.gif" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\app.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\cors\jquery.xdr-transport.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\jquery.fileupload-angular.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\jquery.fileupload-audio.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\jquery.fileupload-image.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\jquery.fileupload-jquery-ui.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\jquery.fileupload-process.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\jquery.fileupload-ui.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\jquery.fileupload-validate.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\jquery.fileupload-video.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\jquery.fileupload.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\jquery.iframe-transport.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\main.js" />
+    <Content Include="Scripts\jQuery-File-Upload-9.11.2\js\vendor\jquery.ui.widget.js" />
     <Content Include="Scripts\jquery.steps.js" />
     <Content Include="Scripts\jquery.steps.min.js" />
     <Content Include="Scripts\ng-table.js" />
@@ -356,6 +385,9 @@
     <Content Include="Areas\CarCalculator\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\CarCalculator\Views\CarCalculator\Timeline.cshtml" />
     <Content Include="Areas\ReceiptCollector\Views\web.config" />
+    <Content Include="Areas\ReceiptCollector\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\ReceiptCollector\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\ReceiptCollector\Views\Receipts\Index.cshtml" />
     <None Include="Properties\PublishProfiles\mjapps.hostingasp.pl - Web Deploy.pubxml" />
     <Content Include="Areas\CarCalculator\Views\CarCalculator\NewEntry.cshtml" />
     <Content Include="Areas\CarCalculator\Views\CarCalculator\List.cshtml" />
@@ -1183,9 +1215,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\ReceiptCollector\Controllers\" />
-    <Folder Include="Areas\ReceiptCollector\Models\" />
-    <Folder Include="Areas\ReceiptCollector\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
