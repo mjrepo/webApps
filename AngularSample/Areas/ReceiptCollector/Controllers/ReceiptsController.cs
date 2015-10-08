@@ -13,5 +13,16 @@ namespace AngularSample.Areas.ReceiptCollector.Controllers
         {
             return View();
         }
+
+        public ActionResult AddArticles()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddArticles(object model)
+        {
+            return View();
+        }
     }
 }

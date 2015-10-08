@@ -32,6 +32,7 @@ namespace AngularSample.Areas.ReceiptCollector.Models
 
     public class ReceiptData
     {
+        public int Id { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime ReceiptDate { get; set; }
         public virtual IList<Photo> Articles { get; set; }

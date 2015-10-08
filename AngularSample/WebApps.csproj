@@ -282,6 +282,7 @@
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-csp.css" />
+    <Content Include="Scripts\angular-file-upload.min.js" />
     <Content Include="Scripts\angular-loader.js" />
     <Content Include="Scripts\angular-loader.min.js" />
     <Content Include="Scripts\angular-message-format.js" />
@@ -388,10 +389,12 @@
     <Content Include="Areas\ReceiptCollector\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\ReceiptCollector\Views\_ViewStart.cshtml" />
     <Content Include="Areas\ReceiptCollector\Views\Receipts\Index.cshtml" />
+    <Content Include="Areas\ReceiptCollector\Views\Receipts\AddArticles.cshtml" />
     <None Include="Properties\PublishProfiles\mjapps.hostingasp.pl - Web Deploy.pubxml" />
     <Content Include="Areas\CarCalculator\Views\CarCalculator\NewEntry.cshtml" />
     <Content Include="Areas\CarCalculator\Views\CarCalculator\List.cshtml" />
     <Content Include="Areas\CarCalculator\Views\CarCalculator\Statistics.cshtml" />
+    <Content Include="Scripts\angular-file-upload.min.js.map" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
